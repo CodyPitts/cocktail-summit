@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -22,4 +23,61 @@ urlpatterns = [
     url(
         '^', include('django.contrib.auth.urls')
     ),
+
+    url(
+        regex = '^$',
+        view = views.HomepageView.as_view(),
+        kwargs = {},
+        name = 'homepage',
+    ),
+
+    url(
+        regex = '^about/$',
+        view = views.AboutView.as_view(),
+        kwargs = {},
+        name = 'about',
+    ),
+
+    url(
+        regex = '^contact/$',
+        view = views.ContactView.as_view(),
+        kwargs = {},
+        name = 'contact',
+    ),
+
+    url(
+        regex = '^schedule/$',
+        view = views.ScheduleView.as_view(),
+        kwargs = {},
+        name = 'schedule',
+    ),
+
+    url(
+        regex = '^speakers/$',
+        view = views.SpeakersView.as_view(),
+        kwargs = {},
+        name = 'speakers',
+    ),
+
+    url(
+        regex = '^sponsors/$',
+        view = views.SponsorsView.as_view(),
+        kwargs = {},
+        name = 'sponsors',
+    ),
+
+    url(
+        regex = '^tickets/$',
+        view = views.TicketsView.as_view(),
+        kwargs = {},
+        name = 'tickets',
+    ),
 ]
+
+
+
+
+
+
+
+
