@@ -9,21 +9,13 @@
 
 <body>
     <div id="banner">
-        <a class="logo" href="{% url 'homepage' %}">Cocktail Summit/a>
+        <a class="logo" href="{% url 'homepage' %}">Cocktail Summit</a>
             <div id="nav">
                 <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'homepage' %}">Home</a></li>
                     <li><a href="{% url 'speakers' %}">Speakers</a></li>
-                    <li><a href="{% url 'schedule' %}">Schedule</a></li>
-                    <li><a href="{% url 'tickets' %}">Tickets</a></li>
                     <li><a href="{% url 'sponsors' %}">Sponsors</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                    <!--{% if user.is_authenticated %}
-                        <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
-                    {% else %}
-                        <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
-                    {% endif %}-->
+                    <li><a href="{% url 'schedule' %}">Schedule</a></li>
                 </ul>
             </div>
     </div>

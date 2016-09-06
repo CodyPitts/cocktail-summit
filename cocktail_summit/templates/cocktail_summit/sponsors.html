@@ -1,1 +1,16 @@
 {% extends 'cocktail_summit/base.html' %}
+
+{% block title %}Sponsors | Cocktail Summit{% endblock %}
+{% block pagename %}Sponsors{% endblock %}
+
+{% block container %}
+    {% if sponsor_list %}
+        {% for sponsor in sponsor_list %}
+        <div class="sponsor-entry">
+            <p>{{ sponsor }} : {{ sponsor.link }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No sponsors are available</p>
+    {% endif %}
+{% endblock %}

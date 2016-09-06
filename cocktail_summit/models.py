@@ -8,17 +8,14 @@ class Speaker(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     title = models.CharField(max_length=200)
-    photo = models.ImageField()
-
-    def full_name(self):
-        return "{0} {1}".format(self.first_name, self.last_name)
+    photo = models.ImageField(blank=True)
 
     def __str__(self):
-        return self.full_name
+        return "{0} {1}".format(self.first_name, self.last_name)
 
 
 class Sponsor(models.Model):
-    logo = models.ImageField()
+    logo = models.ImageField(blank=True)
     name = models.CharField(max_length=200)
     link = models.URLField()
 

@@ -32,27 +32,6 @@ urlpatterns = [
     ),
 
     url(
-        regex = '^about/$',
-        view = views.AboutView.as_view(),
-        kwargs = {},
-        name = 'about',
-    ),
-
-    url(
-        regex = '^contact/$',
-        view = views.ContactView.as_view(),
-        kwargs = {},
-        name = 'contact',
-    ),
-
-    url(
-        regex = '^schedule/$',
-        view = views.ScheduleView.as_view(),
-        kwargs = {},
-        name = 'schedule',
-    ),
-
-    url(
         regex = '^speakers/$',
         view = views.SpeakersView.as_view(),
         kwargs = {},
@@ -67,11 +46,12 @@ urlpatterns = [
     ),
 
     url(
-        regex = '^tickets/$',
-        view = views.TicketsView.as_view(),
+        regex = '^schedule/$',
+        view = views.SessionsView.as_view(),
         kwargs = {},
-        name = 'tickets',
+        name = 'schedule',
     ),
+    
 ]
 
 
