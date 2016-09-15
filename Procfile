@@ -1,0 +1,1 @@
+web: gunicorn cocktail_summit.wsgi:application --log-file -
