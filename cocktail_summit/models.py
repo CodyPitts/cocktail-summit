@@ -3,6 +3,9 @@ from datetime import timedelta
 from django.utils import timezone
 from django.db import models
 
+# after changing models, make new migrations
+# will sometimes require either a DB reset or a nullable/blankable field, due to existing rows
+
 
 class Event(models.Model):
     start_date = models.DateField()
