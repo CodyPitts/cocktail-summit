@@ -5,10 +5,10 @@ from django.views import generic
 from django.utils import timezone
 import datetime
 from datetime import timedelta
-from django.views.generic.edit import FormView
 from .models import Speaker, Sponsor, Session
+from bakery.views import BuildableListView, BuildableTemplateView
 
-class SpeakersView(generic.ListView):
+class SpeakersView(BuildableListView):
     model = Speaker
     template_name = 'cocktail_summit/speakers.html'
     context_object_name = 'speaker_list'
@@ -16,7 +16,7 @@ class SpeakersView(generic.ListView):
     def get_speakers(self):
         return Speaker.objects
 
-class SponsorsView(generic.ListView):
+class SponsorsView(BuildableListView):
     model = Sponsor
     template_name = 'cocktail_summit/sponsors.html'
     context_object_name = 'sponsor_list'
@@ -24,7 +24,7 @@ class SponsorsView(generic.ListView):
     def get_sponsors(self):
         return Sponsor.objects
 
-class SessionsView(generic.ListView):
+class SessionsView(BuildableListView):
     model = Session
     template_name = 'cocktail_summit/schedule.html'
     context_object_name = 'session_list'
@@ -32,5 +32,6 @@ class SessionsView(generic.ListView):
     def get_sessions(self):
         return Session.objects
 
-class HomepageView(generic.base.TemplateView):
+class HomepageView(BuildableTemplateView):
+    build_path = 'index.html'
     template_name = 'cocktail_summit/homepage.html'

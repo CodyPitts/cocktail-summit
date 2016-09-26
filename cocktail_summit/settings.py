@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cocktail_summit',
+    'bakery',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -128,7 +129,16 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'cocktail_summit/static'),
 )
 
+# For serving static pages via Django Bakery
 
+BUILD_DIR = '/Users/codyp/cocktail-summit-dir/cocktail_summit_django_project/cocktail_summit/build'
+
+BAKERY_VIEWS = (
+    'cocktail_summit.views.SpeakersView',
+    'cocktail_summit.views.SessionsView',
+    'cocktail_summit.views.SponsorsView',
+    'cocktail_summit.views.HomepageView',
+)
 
 
 
