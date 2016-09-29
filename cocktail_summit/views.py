@@ -12,14 +12,14 @@ class SpeakersView(BuildableListView):
     model = Speaker
     template_name = 'cocktail_summit/speakers.html'
     context_object_name = 'speaker_list'
-
-    def get_speakers(self):
-        return Speaker.objects
+    build_path = 'speakers/index.html'
+    queryset = Speaker.objects.all()
 
 class SponsorsView(BuildableListView):
     model = Sponsor
     template_name = 'cocktail_summit/sponsors.html'
     context_object_name = 'sponsor_list'
+    build_path = 'sponsors/index.html'
 
     def get_sponsors(self):
         return Sponsor.objects
@@ -28,6 +28,7 @@ class SessionsView(BuildableListView):
     model = Session
     template_name = 'cocktail_summit/schedule.html'
     context_object_name = 'session_list'
+    build_path = 'sessions/index.html'
 
     def get_sessions(self):
         return Session.objects

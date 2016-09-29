@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 
+import environ
+
+ROOT_DIR = environ.Path(__file__) - 3 # (/a/b/myfile.py - 3 = /)
+
+env = environ.Env()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -131,7 +137,7 @@ STATICFILES_DIRS = (
 
 # For serving static pages via Django Bakery
 
-BUILD_DIR = '/Users/codyp/cocktail-summit-dir/cocktail_summit_django_project/cocktail_summit/build'
+BUILD_DIR = '/Users/codyp/cocktail-summit-dir/build'
 
 BAKERY_VIEWS = (
     'cocktail_summit.views.SpeakersView',
@@ -140,6 +146,10 @@ BAKERY_VIEWS = (
     'cocktail_summit.views.HomepageView',
 )
 
+AWS_BUCKET_NAME = 'cocktailsummit'
 
+AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID', None)
+AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY', None)
+AWS_S3_HOST = env.str('AWS_S3_HOST', None)
 
 
