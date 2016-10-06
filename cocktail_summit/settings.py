@@ -146,7 +146,7 @@ BAKERY_VIEWS = (
     'cocktail_summit.views.HomepageView',
 )
 
-AWS_BUCKET_NAME = 'cocktailsummit'
+AWS_BUCKET_NAME = 'cocktailsummit.codyrpitts.com'
 
 AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID', None)
 AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY', None)
