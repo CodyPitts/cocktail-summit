@@ -24,6 +24,8 @@ urlpatterns = [
         '^', include('django.contrib.auth.urls')
     ),
 
+    url(r'^admin_tools/', include('admin_tools.urls')),
+
     url(
         regex = '^$',
         view = views.HomepageView.as_view(),

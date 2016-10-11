@@ -1,5 +1,6 @@
 boto==2.42.0
 Django==1.9.8
+django-admin-tools==0.8.0
 django-bakery==0.8.11
 django-environ==0.4.0
 gunicorn==19.6.0
