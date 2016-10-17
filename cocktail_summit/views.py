@@ -1,38 +1,51 @@
-from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.core import management
 from django.core.urlresolvers import reverse
-from django.views import generic
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
-import datetime
-from datetime import timedelta
-from .models import Speaker, Sponsor, Session
-from bakery.views import BuildableListView, BuildableTemplateView
+from django.utils.decorators import method_decorator
+from django.views import generic
 
-class SpeakersView(BuildableListView):
+from .models import Speaker, Sponsor, Session
+
+class PublishView(generic.base.View):
+    
+    @method_decorator(login_required)
+    def get(self, request, *args, **kwargs):
+        response_message = 'Build triggered!'
+
+        try:
+            management.call_command('showmigrations', verbosity=0)
+        except:
+            response_message = 'Uh oh there was a problem'
+        
+        if self.request.is_ajax():
+            result = {'message': response_message}
+            return self.render_json_to_response(result)
+        else:
+            return HttpResponse(response_message)
+
+class SpeakersView(generic.ListView):
     model = Speaker
     template_name = 'cocktail_summit/speakers.html'
     context_object_name = 'speaker_list'
-    build_path = 'speakers/index.html'
-    queryset = Speaker.objects.all()
 
-class SponsorsView(BuildableListView):
+class SponsorsView(generic.ListView):
     model = Sponsor
     template_name = 'cocktail_summit/sponsors.html'
     context_object_name = 'sponsor_list'
-    build_path = 'sponsors/index.html'
 
     def get_sponsors(self):
         return Sponsor.objects
 
-class SessionsView(BuildableListView):
+class SessionsView(generic.ListView):
     model = Session
     template_name = 'cocktail_summit/schedule.html'
     context_object_name = 'session_list'
-    build_path = 'sessions/index.html'
 
     def get_sessions(self):
         return Session.objects
 
-class HomepageView(BuildableTemplateView):
-    build_path = 'index.html'
+class HomepageView(generic.base.TemplateView):
     template_name = 'cocktail_summit/homepage.html'

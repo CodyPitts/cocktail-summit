@@ -53,6 +53,13 @@ urlpatterns = [
         kwargs = {},
         name = 'schedule',
     ),
+
+    url(
+        regex = '^publish/$',
+        view = views.PublishView.as_view(),
+        kwargs = {},
+        name = 'publish',
+    ),
     
 ]
 

@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cocktail_summit',
-    'bakery',
+    'django_medusa',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -63,7 +63,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'cocktail_summit.urls'
-#os.path.join(BASE_DIR, 'cocktail_summit/templates/cocktail_summit'),
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -144,21 +144,31 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'cocktail_summit/static'),
 )
 
-# For serving static pages via Django Bakery
+# django_medusa -- disk/S3-based renderer
+MEDUSA_RENDERER_CLASS = "django_medusa.renderers.S3StaticSiteRenderer"
+MEDUSA_MULTITHREAD = True
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-BUILD_DIR = '/Users/codyp/cocktail-summit-dir/build'
+"""MEDUSA_DEPLOY_DIR = os.path.join(
+    PROJECT_DIR, '..', "_output"
+)"""
 
-BAKERY_VIEWS = (
-    'cocktail_summit.views.SpeakersView',
-    'cocktail_summit.views.SessionsView',
-    'cocktail_summit.views.SponsorsView',
-    'cocktail_summit.views.HomepageView',
-)
 
-AWS_BUCKET_NAME = 'cocktailsummit.codyrpitts.com'
+# For configuring admin menu via django-admin-tools
 
-AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID', None)
+ADMIN_TOOLS_MENU = 'cocktailmenu.CustomMenu'
+
+
+# For accessing Amazon S3 bucket
+
+#AWS_BUCKET_NAME = 'cocktailsummit.codyrpitts.com'
+
+AWS_ACCESS_KEY = env.str('AWS_ACCESS_KEY', None)
 AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY', None)
-AWS_S3_HOST = env.str('AWS_S3_HOST', None)
+AWS_STORAGE_BUCKET_NAME = env.str('AWS_STORAGE_BUCKET_NAME', None)
+MEDUSA_AWS_STORAGE_BUCKET_NAME = env.str('AWS_STORAGE_BUCKET_NAME', None)
+
+
+
 
 
