@@ -6,5 +6,6 @@ django-environ==0.4.0
 -e git+https://github.com/CodyPitts/django-medusa.git@72c1843bc867b54acd09fc5c130d57d092532c9b#egg=django_medusa
 gunicorn==19.6.0
 Pillow==3.3.1
+psycopg2==2.6.2
 six==1.10.0
 whitenoise==3.2.2
