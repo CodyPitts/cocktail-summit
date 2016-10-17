@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-
+import dj_database_url
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3 # (/a/b/myfile.py - 3 = /)
@@ -97,7 +97,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+DATABASES['default'] = dj_database_url.config(default='sqlite:////'+os.path.join(BASE_DIR, 'db.sqlite3'))
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

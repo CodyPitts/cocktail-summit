@@ -1,8 +1,9 @@
 boto==2.42.0
+dj-database-url==0.4.1
 Django==1.9.8
 django-admin-tools==0.8.0
 django-environ==0.4.0
--e git+https://github.com/CodyPitts/django-medusa.git@v0.3.3#egg=django_medusa
+-e git+https://github.com/CodyPitts/django-medusa.git@72c1843bc867b54acd09fc5c130d57d092532c9b#egg=django_medusa
 gunicorn==19.6.0
 Pillow==3.3.1
 six==1.10.0
