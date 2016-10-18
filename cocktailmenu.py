@@ -20,14 +20,10 @@ class CustomMenu(Menu):
         Menu.__init__(self, **kwargs)
         self.children += [
             items.MenuItem(_('Dashboard'), reverse('admin:index')),
-            items.Bookmarks(),
-            items.AppList(
-                _('Applications'),
-                exclude=('django.contrib.*',)
-            ),
-            items.AppList(
-                _('Administration'),
-                models=('django.contrib.*',)
+            items.MenuItem(_('Tools'),
+                children=[
+                    items.MenuItem('PUBLISH', reverse('publish')),
+                ]
             )
         ]
 
