@@ -169,7 +169,8 @@ AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY', None)
 AWS_STORAGE_BUCKET_NAME = env.str('AWS_STORAGE_BUCKET_NAME', None)
 
 
-
+from boto.s3.connection import OrdinaryCallingFormat
+AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 
 
 
