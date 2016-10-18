@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cocktail_summit',
     'django_medusa',
+    'celery',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -146,7 +147,7 @@ STATICFILES_DIRS = (
 
 # django_medusa -- disk/S3-based renderer
 MEDUSA_RENDERER_CLASS = "django_medusa.renderers.S3StaticSiteRenderer"
-MEDUSA_MULTITHREAD = True
+MEDUSA_MULTITHREAD = False
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 """MEDUSA_DEPLOY_DIR = os.path.join(
