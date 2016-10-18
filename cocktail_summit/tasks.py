@@ -23,3 +23,8 @@ def publish():
         r.generate()
 
     StaticSiteRenderer.finalize_output()
+
+    if MEDUSA_COLLECT_STATIC:
+        # collect static media for deployment
+        call_command('collectstatic', interactive=False,
+            ignore_patterns=MEDUSA_COLLECT_STATIC_IGNORE)

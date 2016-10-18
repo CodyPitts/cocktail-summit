@@ -24,21 +24,6 @@ class PublishView(generic.base.View):
         response_message = 'Build triggered!'
 
         try:
-            #management.call_command('staticsitegen', verbosity=0)
-
-            """StaticSiteRenderer.initialize_output()
-
-            for Renderer in get_static_renderers():
-                r = Renderer()
-                r.generate()
-
-            StaticSiteRenderer.finalize_output()
-
-            if MEDUSA_COLLECT_STATIC:
-                # collect static media for deployment
-                call_command('collectstatic', interactive=False,
-                    ignore_patterns=MEDUSA_COLLECT_STATIC_IGNORE)"""
-            
             publish()
 
         except:
