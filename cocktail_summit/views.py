@@ -3,7 +3,7 @@ from django.core import management
 from django.core.management.base import BaseCommand
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views import generic
@@ -21,7 +21,7 @@ class PublishView(generic.base.View):
     
     @method_decorator(login_required)
     def get(self, request, *args, **kwargs):
-        response_message = redirect('admin')
+        response_message = 'Build triggered!'
 
         try:
             publish()
