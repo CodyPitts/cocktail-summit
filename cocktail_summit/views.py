@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core import management
 from django.core.management.base import BaseCommand
@@ -21,19 +22,16 @@ class PublishView(generic.base.View):
     
     @method_decorator(login_required)
     def get(self, request, *args, **kwargs):
-        response_message = 'Build triggered!'
+        response_message = 'Static pages published'
 
         try:
             publish()
 
         except:
-            response_message = 'Uh oh there was a problem'
+            response_message = 'Uh oh, there was a problem publishing the static pages'
         
-        if self.request.is_ajax():
-            result = {'message': response_message}
-            return self.render_json_to_response(result)
-        else:
-            return HttpResponse(response_message)
+        messages.add_message(request, messages.INFO, response_message)
+        return HttpResponseRedirect(reverse('admin:index'))
 
 class SpeakersView(generic.ListView):
     model = Speaker
