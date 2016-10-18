@@ -15,7 +15,7 @@ app = Celery('cocktail_summit')
 # pickle the object when using Windows.
 app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
-#app.conf.update(BROKER_URL=os.environ['REDIS_URL'],)
+app.conf.update(BROKER_URL=os.environ['REDIS_URL'],)
 
 
 @app.task(bind=True)

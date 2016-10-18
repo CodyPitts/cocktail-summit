@@ -21,7 +21,7 @@ class PublishView(generic.base.View):
     
     @method_decorator(login_required)
     def get(self, request, *args, **kwargs):
-        response_message = 'Build triggered!'
+        response_message = reverse('admin')
 
         try:
             publish()
