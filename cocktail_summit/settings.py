@@ -169,9 +169,6 @@ AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY', None)
 AWS_STORAGE_BUCKET_NAME = env.str('AWS_STORAGE_BUCKET_NAME', None)
 
 
-# For using Celery for tasks
-
-app.conf.update(BROKER_URL=os.environ['REDIS_URL'],)
 
 
 
