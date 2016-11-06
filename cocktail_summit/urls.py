@@ -30,28 +30,42 @@ urlpatterns = [
         regex = '^$',
         view = views.HomepageView.as_view(),
         kwargs = {},
-        name = 'homepage',
+        name = 'eventlist',
     ),
 
     url(
-        regex = '^speakers/$',
+        regex = '^(?P<slug>[-\w]+)/$',
+        view = views.EventBaseView.as_view(),
+        kwargs = {},
+        name = 'eventbase',
+    ),
+
+    url(
+        regex = '^(?P<slug>[-\w]+)/speakers/$',
         view = views.SpeakersView.as_view(),
         kwargs = {},
         name = 'speakers',
     ),
 
     url(
-        regex = '^sponsors/$',
+        regex = '^(?P<slug>[-\w]+)/sponsors/$',
         view = views.SponsorsView.as_view(),
         kwargs = {},
         name = 'sponsors',
     ),
 
     url(
-        regex = '^schedule/$',
+        regex = '^(?P<slug>[-\w]+)/schedule/$',
         view = views.SessionsView.as_view(),
         kwargs = {},
         name = 'schedule',
+    ),
+
+    url(
+        regex = '^(?P<slug>[-\w]+)/tickets/$',
+        view = views.TicketsView.as_view(),
+        kwargs = {},
+        name = 'tickets',
     ),
 
     url(
@@ -59,6 +73,20 @@ urlpatterns = [
         view = views.PublishView.as_view(),
         kwargs = {},
         name = 'publish',
+    ),
+
+    url(
+        regex = '^contact/$',
+        view = views.ContactView.as_view(),
+        kwargs = {},
+        name = 'contact',
+    ),
+
+    url(
+        regex = '^conduct/$',
+        view = views.ConductView.as_view(),
+        kwargs = {},
+        name = 'conduct',
     ),
     
 ]

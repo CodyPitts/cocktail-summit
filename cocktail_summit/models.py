@@ -11,13 +11,21 @@ class Event(models.Model):
     event_name = models.CharField(max_length=50)
     start_date = models.DateField(blank=True)
     end_date = models.DateField(blank=True)
-    city = models.CharField(max_length=50, blank=True)
+    city = models.CharField(max_length=50)
+    slug = models.SlugField(help_text='The URL piece that identifies this event, e.g. `cocktailsummit.com/spokane`')
     description = models.TextField(blank=True)
     venue = models.CharField(max_length = 50, blank=True)
     state = models.CharField(max_length=20, blank=True)
+    day_one_blurb = models.TextField(blank=True)
+    day_two_blurb = models.TextField(blank=True)
 
     def __str__(self):
         return self.event_name
+
+    def distinct_dates(self):
+        #TODO: write a method that returns a list of the distinct
+        #dates that this event has
+        return []
 
 
 class Speaker(models.Model):
@@ -43,10 +51,10 @@ class Sponsor(models.Model):
         return self.name
 
 
-class Session(models.Model):
+class Session(models.Model):# Add session blocks
     title = models.CharField(max_length=200)
-    start_time = models.DateTimeField(blank=True)
-    end_time = models.DateTimeField(blank=True)
+    start_time = models.DateTimeField(blank=True, null=True)
+    end_time = models.DateTimeField(blank=True, null=True)
     room = models.CharField(max_length=200, blank=True)
     summary = models.TextField(blank=True)
     sponsor = models.ManyToManyField(Sponsor, blank=True)
@@ -56,7 +64,7 @@ class Session(models.Model):
     def __str__(self):
         return self.title
 
-class OffsiteEvent(models.Model):
+class OffsiteSession(models.Model):
     title = models.CharField(max_length=200)
     start_time = models.DateTimeField(blank=True)
     end_time = models.DateTimeField(blank=True)

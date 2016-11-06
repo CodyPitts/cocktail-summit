@@ -8,21 +8,46 @@
 </head>
 
 <body>
+    {% block event_links_top %}
     <div id="banner">
-        <a class="logo" href="{% url 'homepage' %}">Cocktail Summit</a>
+        <a class="logo" href="{% url 'eventlist' %}">Cocktail Summit</a>
             <div id="nav">
                 <ul>
-                    <li><a href="{% url 'homepage' %}">Home</a></li>
-                    <li><a href="{% url 'speakers' %}">Speakers</a></li>
-                    <li><a href="{% url 'sponsors' %}">Sponsors</a></li>
-                    <li><a href="{% url 'schedule' %}">Schedule</a></li>
+                    <li><a href="{% url 'eventbase' event.slug %}">Home</a></li>
+                    <li><a href="{% url 'eventbase' event.slug %}">About</a></li>
+                    <li><a href="{% url 'speakers' event.slug %}">Speakers</a></li>
+                    <li>
+                        <a href="{% url 'schedule' event.slug %}">Schedule</a>
+                    </li>
+                    <li><a href="{% url 'tickets' event.slug %}">Tickets</a></li>
+                    <li><a href="{% url 'sponsors' event.slug %}">Sponsors</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
             </div>
     </div>
+    {% endblock %}
+
+
     <div class="container">
         <h1>{% block pagename %}Page name{% endblock %}</h1>
         
         {% block container %}{% endblock %}
     </div>
+
+
+    {% block event_links_bottom %}
+    <div class="bottom-banner">
+        <ul>
+            <li><a href="{% url 'eventbase' event.slug %}">About</a></li>
+            <li><a href="{% url 'speakers' event.slug %}">Speakers</a></li>
+            <li><a href="{% url 'schedule' event.slug %}">Schedule</a></li>
+            <li><a href="{% url 'tickets' event.slug %}">Tickets</a></li>
+            <li><a href="{% url 'sponsors' event.slug %}">Sponsors</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'conduct' %}">Code of Conduct</a></li>
+            <li>© Cocktail Cabinet, LLC 2016.</li>
+        </ul>
+    </div>
+    {% endblock %}
 </body>
 </html>

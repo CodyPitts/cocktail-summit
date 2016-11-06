@@ -1,4 +1,21 @@
 {% extends 'cocktail_summit/base.html' %}
 
-{% block title %}Home | Cocktail Summit{% endblock %}
-{% block pagename %}Homepage{% endblock %}
+{% block title %}Events | Cocktail Summit{% endblock %}
+{% block pagename %}List of current events{% endblock %}
+
+{% block event_links_top %}{% endblock %}
+{% block event_links_bottom %}{% endblock %}
+
+{% block container %}
+    {% if event_list %}
+        <div id="event-links">
+            <ul>
+                {% for event in event_list %}
+                    <li><a href="{% url 'eventbase' event.slug %}">{{ event }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p>No events are upcoming.</p>
+    {% endif %}
+{% endblock %}

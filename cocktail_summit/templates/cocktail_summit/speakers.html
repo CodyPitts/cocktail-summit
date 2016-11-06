@@ -1,16 +1,17 @@
 {% extends 'cocktail_summit/base.html' %}
 
 {% block title %}Speakers | Cocktail Summit{% endblock %}
-{% block pagename %}Speakers{% endblock %}
+{% block pagename %}Speakers for {{ event.event_name }}{% endblock %}
 
 {% block container %}
     {% if speaker_list %}
         {% for speaker in speaker_list %}
         <div class="speaker-entry">
-            <p>{{ speaker }} : {{ speaker.title }}</p>
+            <p>{{ speaker }}<br/>{{ speaker.affiliation }}</p>
         </div>
         {% endfor %}
     {% else %}
         <p>No speakers are available</p>
     {% endif %}
+
 {% endblock %}
